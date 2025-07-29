@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShoppingCart
@@ -10,6 +11,7 @@ namespace ShoppingCart
 
     // 4-) Sepette olan üründen 1 adet eklendiğinde sepetteki toplam ürün adedi 1 artmalı eleman sayısı aynı kalmalıdır.
     // 5-) Sepete farklı üründen 1 adet eklendiğinde toplam ürün adedi ve eleman sayısı birer artmalıdır.
+    // 6-) Sepette aynı üründen 2. kez eklendiğinde hata vermeli 
     public class CartManager
     {
         private readonly List<CartItem> _cartItems;
@@ -18,6 +20,20 @@ namespace ShoppingCart
         {
             _cartItems = new List<CartItem>();
         }
+
+        //Rule for 4
+        //public void Add(CartItem cartItem)
+        //{
+        //    var addedCartItem = _cartItems.SingleOrDefault(p => p.Product.ProductId == cartItem.Product.ProductId);
+        //    if (addedCartItem == null)
+        //    {
+        //        _cartItems.Add(cartItem);
+        //    }
+        //    else
+        //    {
+        //        addedCartItem.Quantity += cartItem.Quantity;
+        //    }
+        //}
 
         public void Add(CartItem cartItem)
         {
@@ -28,7 +44,7 @@ namespace ShoppingCart
             }
             else
             {
-                addedCartItem.Quantity += cartItem.Quantity;
+                throw new ArgumentException("This product has already been added");
             }
         }
 

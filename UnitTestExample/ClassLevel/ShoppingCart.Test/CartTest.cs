@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace ShoppingCart.Test
 {
@@ -57,19 +58,27 @@ namespace ShoppingCart.Test
             Assert.AreEqual(totalElementNumber + 1, _cartManager.TotalItems);
         }
 
+        // Rule for 4
+        //[TestMethod]
+        //public void When_product_added_cart_total_product_should_increase_one_and_number_of_elements_should_remain_same()
+        //{
+        //    // Arrange
+        //    int totalAmount = _cartManager.TotalQuantity;
+        //    int totalElementNumber = _cartManager.TotalItems;
+
+        //    // Act
+        //    _cartManager.Add(_cartItem);
+
+        //    // Assert
+        //    Assert.AreEqual(totalAmount + 1, _cartManager.TotalQuantity);
+        //    Assert.AreEqual(totalElementNumber, _cartManager.TotalItems);
+        //}
+
         [TestMethod]
-        public void When_product_added_cart_total_product_should_increase_one_and_number_of_elements_should_remain_same()
+        [ExpectedException(typeof(ArgumentException))] // Beklenilen hata türü
+        public void If_same_product_added_cart_throw_exception()
         {
-            // Arrange
-            int totalAmount = _cartManager.TotalQuantity;
-            int totalElementNumber = _cartManager.TotalItems;
-
-            // Act
             _cartManager.Add(_cartItem);
-
-            // Assert
-            Assert.AreEqual(totalAmount + 1, _cartManager.TotalQuantity);
-            Assert.AreEqual(totalElementNumber, _cartManager.TotalItems);
         }
     }
 }
