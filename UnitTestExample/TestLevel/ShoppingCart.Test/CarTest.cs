@@ -5,9 +5,8 @@ namespace ShoppingCart.Test
     [TestClass]
     public class CarTest
     {
-        private CartItem _cartItem;
-        private CartManager _cartManager;
-
+        private static CartItem _cartItem;
+        private static CartManager _cartManager;
 
         [TestInitialize]
         public void TestInitialize()
