@@ -95,5 +95,22 @@ namespace CollectionAsserts.Tests
 
             CollectionAssert.AllItemsAreInstancesOfType(list, typeof(string));
         }
+
+        [TestMethod]
+        public void IsSubsetOf_Test()
+        {
+            List<string> newUsers = new List<string> { "Utku", "Umut" };
+            List<string> oldUsers = new List<string> { "Nuray", "Birol" };
+
+            CollectionAssert.IsSubsetOf(newUsers, _users);
+            CollectionAssert.IsNotSubsetOf(oldUsers, _users);
+        }
+
+        [TestMethod]
+        public void Constain_Test()
+        {
+            CollectionAssert.Contains(_users, "Utku");
+            CollectionAssert.DoesNotContain(_users, "Ahmet");
+        }
     }
 }
