@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace CollectionAsserts.Tests
@@ -69,6 +70,30 @@ namespace CollectionAsserts.Tests
             newUsers.Add("Birol");
 
             CollectionAssert.AreNotEquivalent(newUsers, _users);
+        }
+
+        [TestMethod]
+        public void Users_should_not_recieve_null_value()
+        {
+            CollectionAssert.AllItemsAreNotNull(_users);
+        }
+
+        [TestMethod]
+        public void Users_should_be_unique()
+        {
+            CollectionAssert.AllItemsAreUnique(_users);
+        }
+
+        [TestMethod]
+        public void All_elements_should_be_same_type()
+        {
+            ArrayList list = new ArrayList
+            {
+                "Utku", "Umut", "Birol"
+                //"Utku", "Umut", 1
+            };
+
+            CollectionAssert.AllItemsAreInstancesOfType(list, typeof(string));
         }
     }
 }
