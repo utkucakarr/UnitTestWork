@@ -1,5 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Messaging;
 
 namespace AreSameWork.Test
 {
@@ -52,6 +55,33 @@ namespace AreSameWork.Test
         {
             Assert.IsTrue(10 % 2 == 0);
             Assert.IsFalse(10 % 2 == 1);
+        }
+
+        [TestMethod]
+        public void TestMethod6()
+        {
+            List<string> names = new List<string> { "Utku", "Umut", "Nuray" };
+
+            var namesStartWithC = names.FirstOrDefault(t => t.StartsWith("C"));
+            var namesStartWithN = names.FirstOrDefault(t => t.StartsWith("N"));
+
+            Assert.IsNull(namesStartWithC, "isNull başarısız oldu");
+            Assert.IsNotNull(namesStartWithN, "isNotNull başarısız oldu");
+        }
+
+        [TestMethod]
+        public void TestMethod7()
+        {
+            try
+            {
+                var sayi = 5;
+                int result = sayi / 0;
+            }
+            catch (DivideByZeroException)
+            {
+
+                Assert.Fail("Test başarısız oldu");
+            }
         }
     }
 }
