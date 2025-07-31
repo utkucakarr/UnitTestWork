@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace BusinessLayer.Test
 {
@@ -22,6 +23,21 @@ namespace BusinessLayer.Test
             var result = manager.AddUser(name, phone, email);
 
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        [DataSource("MyDataSource")]
+        public void DataTest2()
+        {
+            var processManager = new ProcessManager();
+
+            int x = Convert.ToInt32(TestContext.DataRow["x"]);
+            int y = Convert.ToInt32(TestContext.DataRow["y"]);
+            int expected = Convert.ToInt32(TestContext.DataRow["expected"]);
+
+            int actual = processManager.Sum(x, y);
+
+            Assert.AreEqual(actual, expected);
         }
     }
 }
