@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Users>
+	<User name ="Utku" phone ="1234" email="utku@gmail.com" />
+	<User name ="Umut" phone ="12345" email="umut@gmail.com" />
+	<User name ="Nuray" phone ="123456" email="nuray@gmail.com" />
+	<User name ="Birol" phone ="1234567" email="birol@gmail.com" />
+	<User name ="Cüney" phone ="12345678" email="cunet@gmail.com" />
+</Users>
